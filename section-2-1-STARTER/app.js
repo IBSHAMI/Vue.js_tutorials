@@ -4,12 +4,17 @@ const vm = Vue.createApp({
             firstName: 'jon', 
             lastName: 'snow',
             email: 'jonsnow@gmail.com',
+            age: 26,
             url: 'https://google.com',
+            raw_url: '<a href="https://google.com" target="_blank">Google</a>',
         }
     }, 
     methods: { // methods are functions that can be called in the template
         fullName() {
             return `${this.firstName} ${this.lastName.toUpperCase()}` // this refers to the data object
+        }, 
+        increment() { 
+            this.age++ // this refers to the data object
         }
     }
 }).mount('#app')          
