@@ -5,10 +5,17 @@
     <link rel="stylesheet" type="text/css" href="main.css" />
   </head>
   <body>
-    <div id="app">
-      {{ firstName }}
-      {{ lastName }}
-      {{ email }}
+    <div id="app" v-cloak>
+      {{ fullName() }} <br/>
+      {{ email }} <br />
+      <p><a v-bind:href="url" target="_blank">Google</a></p>
+      <hr />
+
+      <label>First Name</label>
+      <input type="text" v-model="firstName"/>
+
+      <label>Last Name</label>
+      <input type="text" v-model="lastName"/>
     </div>
 
     <!-- <div id="app2">
