@@ -37,6 +37,14 @@ const vm = Vue.createApp({
       } ${this.lastName.toUpperCase()}`; // this refers to the data object
     },
   },
+  // watch is used to watch for changes in any data property
+  watch: {
+    age(newVal, oldVal) {
+      setTimeout(() => {
+        this.age = 26;
+      }, 3000);
+    },
+  },
 }).mount("#app");
 
 // change data inside the vue instance model
