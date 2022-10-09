@@ -15,7 +15,15 @@
         <option value="text-orange">orange</option>
       </select>
 
-      <div class="circle" :class="[selectedColor, boxClasses]">Hi!</div>
+      <input type="number" v-model.lazy="size" />
+
+      <div
+        class="circle"
+        :class="[selectedColor, boxClasses]"
+        :style="{ width: size + 'px' , height: size + 'px', lineHeight: size + 'px' }"
+      >
+        Hi!
+      </div>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
