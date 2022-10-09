@@ -1,2 +1,7 @@
 let vm = Vue.createApp({
-}).mount('#app');
+  data() {
+    return {
+      check: 0,
+    };
+  },
+}).mount("#app");

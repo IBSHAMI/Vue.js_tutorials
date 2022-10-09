@@ -1,16 +1,27 @@
-<!DOCTYPE>
+<!DOCTYPE >
 <html>
+  <head>
+    <title>VueJS Course</title>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+  </head>
 
-<head>
-  <title>VueJS Course</title>
-  <link rel="stylesheet" type="text/css" href="main.css" />
-</head>
+  <body>
+    <div id="app">
+      <p v-if="check == 1">check for condition1</p>
+      <template v-else-if="check == 2">
+        <h1>here is another ex</h1>
+        <p>check for condition 2</p>
+      </template>
+      <p v-else>check for condition 3</p>
 
-<body>
-  <div id="app"></div>
+      <select v-model="check">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+    </div>
 
-  <script src="https://unpkg.com/vue@next"></script>
-  <script src="app.js"></script>
-</body>
-
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="app.js"></script>
+  </body>
 </html>
