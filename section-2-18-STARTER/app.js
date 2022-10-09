@@ -1,2 +1,13 @@
 let vm = Vue.createApp({
-}).mount('#app')
+  data() {
+    return {
+      isPurple: false,
+      selectedColor: '',
+    };
+  },
+  computed: {
+    boxClasses() {
+      return { purple: this.isPurple };
+    },
+  },
+}).mount("#app");
