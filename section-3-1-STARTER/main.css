@@ -71,6 +71,11 @@ button {
   margin-right: 10px;
 }
 
+.button_pressed { 
+  background-color: #fff;
+  color: #444;
+}
+
 label{
   color: #fff;
 }

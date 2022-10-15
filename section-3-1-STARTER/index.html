@@ -21,18 +21,17 @@
             <input type="range" min="-180" max="180" v-model="rotateY" />
 
             <label>rotateZ: {{ rotateZ }}deg; </label>
-            <input type="range" min="-180" max="180" v-model="rotateY" />
+            <input type="range" min="-180" max="180" v-model="rotateZ" />
 
-            <button type="button" @click="reset">Reset</button>
-            <button type="button">Copy</button>
+            <button type="button" @click.prevent="reset">Reset</button>
+            <button type="button" @click.prevent="copy">Copy</button>
           </div>
         </section>
         <section class="output">
           <div class="box-container">
             <div
               class="box"
-              :style="{perspective: prespective + 'px',
-                       transform: 'rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) rotateZ(' + rotateZ + 'deg)'}"
+              :style="boxStyles"
             ></div>
           </div>
         </section>
