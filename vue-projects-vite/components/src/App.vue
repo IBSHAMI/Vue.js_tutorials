@@ -1,8 +1,11 @@
 <template>
   <div>
     <h3>hello</h3>
-    <greetings />
-    <User :age="age"/>
+    <greetings :age="age"/>
+    <User :age="age" @update_age="update_age"/>
+
+    <button @click="age++">add 1 to age</button>
+    <button @click="age--">subtract 1 from age</button>
   </div>
 </template>
 
@@ -24,6 +27,11 @@ export default {
       age: 30
     }
   },
+  methods: {
+    update_age(increment) {
+      this.age += increment;
+    }
+  }
 };
 </script>
 
