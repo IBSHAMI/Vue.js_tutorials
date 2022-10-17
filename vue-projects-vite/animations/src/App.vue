@@ -10,7 +10,7 @@
       <h2 v-if="!show">Hello</h2>
     </transition> -->
 
-    <transition
+    <!-- <transition
       @before-enter="beforeEnter"
       @enter="enter"
       @after-enter="afterEnter"
@@ -21,7 +21,19 @@
       name="fade"
     >
       <h2 v-if="!show">Hello!!!!</h2>
-    </transition>
+    </transition> -->
+    <button @click.prevent="addItem">Add</button>
+    <ul>
+      <transition-group name="fade">
+        <li
+          v-for="(number, index) in numbers"
+          :key="number"
+          @click.prevent="removeItem(index)"
+        >
+          {{ number }}
+        </li>
+      </transition-group>
+    </ul>
   </div>
 </template>
 
@@ -31,9 +43,18 @@ export default {
   data() {
     return {
       show: false,
+      numbers: [1, 2, 3, 4, 5],
     };
   },
   methods: {
+    addItem() {
+      const num = Math.max(...this.numbers) + 1;
+      this.numbers.push(num);
+      this.numbers.sort(() => Math.random() - 0.5);
+    },
+    removeItem(index) {
+      this.numbers.splice(index, 1);
+    },
     beforeEnter(el) {
       console.log("beforeEnter", el);
     },
@@ -67,12 +88,17 @@ export default {
     },
     afterLeave(el) {
       console.log("afterLeave", el);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style>
+li {
+  font-size: 22px;
+  cursor: pointer;
+}
+
 h2 {
   width: 400px;
   padding: 20px;
@@ -88,6 +114,14 @@ h2 {
 .fade-leave-to {
   transition: all 1s linear;
   opacity: 0;
+}
+
+.fade-move {
+  transition: all 1s linear;
+}
+
+.fade-leave-active {
+  position: absolute;
 }
 
 .zoom-enter-active {
