@@ -1,20 +1,29 @@
 <template>
   <div class="ctr">
-    <question
-      v-if="test_on"
-      :questions="questions"
-      :question_answered="question_answererd"
-      @question_answererd_fun="question_answererd_fun"
-    />
-    <results
-      v-else
-      :results="results"
-      :quiz_score="quiz_score"
-      :returned_title="returned_title(quiz_score)"
-      :returned_text="returned_text(quiz_score)"
-      :total_num_question="total_questions()"
-    />
-    <button type="button" class="reset-btn" @click.prevent="reset">Reset</button>
+    <transition name="fade" mode="out-in">
+      <question
+        v-if="test_on"
+        :questions="questions"
+        :question_answered="question_answererd"
+        @question_answererd_fun="question_answererd_fun"
+      />
+      <results
+        v-else
+        :results="results"
+        :quiz_score="quiz_score"
+        :returned_title="returned_title(quiz_score)"
+        :returned_text="returned_text(quiz_score)"
+        :total_num_question="total_questions()"
+      />
+    </transition>
+    <button
+      type="button"
+      class="reset-btn"
+      @click.prevent="reset"
+      v-show="!test_on"
+    >
+      Reset
+    </button>
   </div>
 </template>
 
@@ -120,7 +129,6 @@ export default {
       this.question_answererd++;
     },
     returned_title(quiz_score) {
-      console.log(typeof quiz_score);
       if (quiz_score <= 2) {
         return this.results[0].title;
       } else {
@@ -134,11 +142,11 @@ export default {
         return this.results[1].desc;
       }
     },
-    reset () {
+    reset() {
       this.test_on = true;
       this.question_answererd = 0;
       this.quiz_score = 0;
-    }
+    },
   },
   watch: {
     question_answererd() {
