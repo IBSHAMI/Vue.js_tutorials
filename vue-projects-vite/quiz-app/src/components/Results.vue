@@ -1,14 +1,18 @@
 <template>
   <div class="result">
-    <div class="title">You got sample result 1!</div>
-    <div class="desc">Enter a short description here about the result.</div>
+    <div class="title">
+      {{ returned_title }}, You got {{ quiz_score }} out of
+      {{ total_num_question }}!
+    </div>
+    <div class="desc">{{ returned_text }}</div>
   </div>
 </template>
 
 <script>
 export default {
-    name: "Results"
-}
+  name: "Results",
+  props: ["results", "quiz_score", "total_num_question", "returned_title", "returned_text"],
+};
 </script>
 
 <style scoped></style>

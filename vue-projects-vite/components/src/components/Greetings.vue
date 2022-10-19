@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p v-if=" age > 25">>{{ msg }}e</p>
+        <p v-if=" age > 25">>{{ msg }}</p>
         <p v-else>you have to be older than 25 to view this </p>
     </div>
 </template>
